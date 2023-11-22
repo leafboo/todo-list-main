@@ -1,0 +1,86 @@
+body {
+  font-family: Roboto, Arial;
+  background-color: black;
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+}
+
+
+
+.todo-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+
+
+
+.create-account-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+  .input-name {
+    font-size: 16px;
+    padding: 7px 14px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 20px;
+  }
+  .create-account {
+    background-color: white;
+    font-size: 16px;
+    padding: 8px 15px;
+    
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .create-account.active {
+    margin-right: 10px;
+  }
+    .create-account:hover {
+      opacity: 0.7;
+    }
+
+
+
+.accounts-container-box {
+  display: flex;
+  justify-content: center;
+}
+.box {
+  border-width: 1px;
+  color: rgb(167, 167, 167);
+  border-style: solid;
+  width: 700px;
+  height: 600px;
+  border-radius: 3px;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+img {
+  width: 40px;
+  height: 40px;
+}
+
