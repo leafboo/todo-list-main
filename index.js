@@ -1,8 +1,9 @@
 const createAccountContainerElement = document.querySelector('.js-create-account-container');
 const boxElement = document.querySelector('.js-box');
 let createAccountElement = document.querySelector('.js-create-account');
+
 createAccountElement.addEventListener('click', createAccount);
-createAccountElement.addEventListener('click', addAccountToBox);
+
 
 // store the data of accounts here
 let accountData = [];
@@ -11,16 +12,29 @@ let accountData = [];
 
 function createAccount() {
   
- 
+  createAccountContainerElement.innerHTML = '';
+  let df = new DocumentFragment();
+  // create input
+  let input = document.createElement('input');
+  input.className = 'input-name js-input-name';
+  input.type = 'text';
+  input.placeholder = 'Enter your name';
+  // create make account button
+  let buttonCreate2 = document.createElement('button');
+  buttonCreate2.className = 'create-account active js-create-account-button';
+  buttonCreate2.textContent = 'Create';
+  // create the back button
+  let buttonBack = document.createElement('button');
+  buttonBack.className = 'create-account active back-button';
+  buttonBack.textContent = 'X';
 
-
-
-  createAccountContainerElement.innerHTML = `
-    <input class="input-name js-input-name" type="text" placeholder="Enter your name">
-    <button class="create-account active js-create-account-button">Create</button>
-    <button class="create-account active back-button">X</button>
-    `;
+  df.appendChild(input);
+  df.appendChild(buttonCreate2);
+  df.appendChild(buttonBack);
+  createAccountContainerElement.appendChild(df);
     
+
+
     
     // display and store accounts data
     const createAccountButton = document.querySelector('.js-create-account-button');
@@ -46,17 +60,18 @@ function createAccount() {
     backButtonElement.addEventListener('click', goBack);
     
     function goBack() {
-      createAccountContainerElement.innerHTML = `
-        <button class="create-account js-create-account">Create account</button>`;
+      createAccountContainerElement.innerHTML = '';
+      let df = new DocumentFragment();
+      let buttonCreateOne = document.createElement('button');
+      buttonCreateOne.className = 'create-account js-create-account';
+      buttonCreateOne.textContent = 'Create account';
+      df.appendChild(buttonCreateOne);
+      createAccountContainerElement.appendChild(df);
         
-      createAccountElement = document.querySelector('.js-create-account');
-      createAccountElement.addEventListener('click', createAccount);
+      
+      buttonCreateOne.addEventListener('click', createAccount);
     }
     
-}
-
-function addAccountToBox() {
-  boxElement.innerHTML += `<div></div>`;
 }
 
 
