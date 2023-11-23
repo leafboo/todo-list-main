@@ -4,18 +4,43 @@ let createAccountElement = document.querySelector('.js-create-account');
 createAccountElement.addEventListener('click', createAccount);
 createAccountElement.addEventListener('click', addAccountToBox);
 
-
+// store the data of accounts here
+let accountData = [];
 
 
 
 function createAccount() {
-  let df = new DocumentFragment();
+  
+ 
+
+
+
   createAccountContainerElement.innerHTML = `
     <input class="input-name js-input-name" type="text" placeholder="Enter your name">
-    <button class="create-account active">Create</button>
+    <button class="create-account active js-create-account-button">Create</button>
     <button class="create-account active back-button">X</button>
     `;
     
+    
+    // display and store accounts data
+    const createAccountButton = document.querySelector('.js-create-account-button');
+    const name = document.querySelector('.js-input-name');
+    createAccountButton.addEventListener('click', () => {
+      let df = new DocumentFragment();
+      // Store data to array
+      accountData.push(name.value);
+      // display accounts
+      let div = document.createElement('div');
+      div.textContent = name.value;
+      df.appendChild(div);
+
+      boxElement.appendChild(df);
+      name.value = '';
+    });
+    
+    
+
+
 
     let backButtonElement = document.querySelector('.back-button');
     backButtonElement.addEventListener('click', goBack);
