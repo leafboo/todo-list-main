@@ -3,7 +3,7 @@ const boxElement = document.querySelector('.js-box');
 
 let accountsData = [];
 
-export function createAccount() {
+export function createAccountEventListener() {
   // checks if the account box is full and if not, run the function
   if (accountsData.length <= 13) {
     // create the input text, create and delete button
@@ -13,42 +13,44 @@ export function createAccount() {
     const name = document.querySelector('.js-input-name');
 
     // when the create account button is pressed
-    createAccountButton.addEventListener('click', () => {
-      if (accountsData.length <= 13 && name.value) {
+    createAccountButton.addEventListener('click', () => createAccount(name));
+    name.addEventListener('keyup', (event) => event.key === 'Enter' ? createAccount(name) : '');
 
-        const accountId = generateUniqueId();
-        accountsData.push({id: accountId, name: name.value});
-
-        let df = new DocumentFragment();
-
-        
-        // display accounts
-        let div = document.createElement('div');
-        div.textContent = name.value;
-        div.className = 'account-names';
-        div.setAttribute('data-account-id', accountId);
-        df.appendChild(div);
-
-        // make delete button
-        let button = document.createElement('button');
-        button.textContent = 'Delete';
-        button.className = 'delete-button js-delete-button';
-        button.addEventListener('click', () => { deleteAccount(accountId); });
-        div.appendChild(button);
-
-      
-        boxElement.appendChild(df);
-        name.value = '';
-      }
-      
-    });
     
 
   }
   
 }
 
+function createAccount(name) {
+  
+  if (accountsData.length <= 13 && name.value) {
 
+    const accountId = generateUniqueId();
+    accountsData.push({id: accountId, name: name.value});
+
+    let df = new DocumentFragment();
+
+    
+    // display accounts
+    let div = document.createElement('div');
+    div.textContent = name.value;
+    div.className = 'account-names';
+    div.setAttribute('data-account-id', accountId);
+    df.appendChild(div);
+
+    // make delete button
+    let button = document.createElement('button');
+    button.textContent = 'Delete';
+    button.className = 'delete-button js-delete-button';
+    button.addEventListener('click', () => { deleteAccount(accountId); });
+    div.appendChild(button);
+
+  
+    boxElement.appendChild(df);
+    name.value = '';
+  }
+}
 
 function deleteAccount(accountId) {
   const index = accountsData.findIndex((account) => account.id === accountId);
@@ -106,6 +108,6 @@ function createInputTodo() {
     createAccountContainerElement.appendChild(df);
       
     
-    buttonCreateOne.addEventListener('click', createAccount);
+    buttonCreateOne.addEventListener('click', createAccountEventListener);
   }
 }
