@@ -1,49 +1,20 @@
 const createAccountContainerElement = document.querySelector('.js-create-account-container');
 const boxElement = document.querySelector('.js-box');
 
-
 let accountsData = [];
-
-
-
 
 export function createAccount() {
   // checks if the account box is full and if not, run the function
   if (accountsData.length <= 13) {
-    // remove the create button 
-    createAccountContainerElement.innerHTML = '';
-
-    let df = new DocumentFragment();
-    // create account input
-    let input = document.createElement('input');
-    input.className = 'input-name js-input-name';
-    input.type = 'text';
-    input.placeholder = 'Enter your name';
-    // create make account button
-    let buttonCreate2 = document.createElement('button');
-    buttonCreate2.className = 'create-account active js-create-account-button';
-    buttonCreate2.textContent = 'Create';
-    // create the back button
-    let buttonBack = document.createElement('button');
-    buttonBack.className = 'create-account active back-button';
-    buttonBack.textContent = 'X';
-
-    df.appendChild(input);
-    df.appendChild(buttonCreate2);
-    df.appendChild(buttonBack);
-    // append input, create button, and back button to the HTML
-    createAccountContainerElement.appendChild(df);
-      
-
-
-
-
+    // create the input text, create and delete button
+    createInputTodo();
+    
     const createAccountButton = document.querySelector('.js-create-account-button');
     const name = document.querySelector('.js-input-name');
 
     // when the create account button is pressed
     createAccountButton.addEventListener('click', () => {
-      if (accountsData.length <= 13) {
+      if (accountsData.length <= 13 && name.value) {
         let df = new DocumentFragment();
 
         
@@ -62,10 +33,9 @@ export function createAccount() {
         button.className = 'delete-button js-delete-button';
         button.id = name.value;
         div.appendChild(button);
+
+        // making delete button functional
         
-        // make delete button functional
-        // foreach accountsData[], do this!!!!
-       
         
       
         boxElement.appendChild(df);
@@ -75,39 +45,60 @@ export function createAccount() {
     });
     
 
+  }
+  
+}
 
 
-    let backButtonElement = document.querySelector('.back-button');
-    backButtonElement.addEventListener('click', goBack);
-    // go back to default page
-    function goBack() {
-      createAccountContainerElement.innerHTML = '';
-      let df = new DocumentFragment();
-      let buttonCreateOne = document.createElement('button');
-      buttonCreateOne.className = 'create-account js-create-account';
-      buttonCreateOne.textContent = 'Create account';
-      df.appendChild(buttonCreateOne);
-      createAccountContainerElement.appendChild(df);
-        
+
+function deleteAccount() {
+
+}
+
+
+function generateUniqueId() {
+  return '_' + Math.random().toString(36).substr(2, 9);
+}
+
+
+function createInputTodo() {
+  // remove the create button 
+  createAccountContainerElement.innerHTML = '';
+
+  let df = new DocumentFragment();
+  // create account input
+  let input = document.createElement('input');
+  input.className = 'input-name js-input-name';
+  input.type = 'text';
+  input.placeholder = 'Enter your name';
+  // create make account button
+  let buttonCreate2 = document.createElement('button');
+  buttonCreate2.className = 'create-account active js-create-account-button';
+  buttonCreate2.textContent = 'Create';
+  // create the back button
+  let buttonBack = document.createElement('button');
+  buttonBack.className = 'create-account active back-button';
+  buttonBack.textContent = 'X';
+
+  df.appendChild(input);
+  df.appendChild(buttonCreate2);
+  df.appendChild(buttonBack);
+  // append input, create button, and back button to the HTML
+  createAccountContainerElement.appendChild(df);
+
+  let backButtonElement = document.querySelector('.back-button');
+  backButtonElement.addEventListener('click', goBack);
+  // go back to default page
+  function goBack() {
+    createAccountContainerElement.innerHTML = '';
+    let df = new DocumentFragment();
+    let buttonCreateOne = document.createElement('button');
+    buttonCreateOne.className = 'create-account js-create-account';
+    buttonCreateOne.textContent = 'Create account';
+    df.appendChild(buttonCreateOne);
+    createAccountContainerElement.appendChild(df);
       
-      buttonCreateOne.addEventListener('click', createAccount);
-    }
     
+    buttonCreateOne.addEventListener('click', createAccount);
   }
-  
 }
-
-
-
-function deleteAccount(accountId) {
-  let accountDiv = document.getElementById(accountId);
-  if (accountId) {
-    accountDiv.remove();
-
-    const index = accountsData.indexOf(accountId);
-    accountsData.splice(index, 1);
-  }
-  
-}
-
-
