@@ -15,28 +15,27 @@ export function createAccount() {
     // when the create account button is pressed
     createAccountButton.addEventListener('click', () => {
       if (accountsData.length <= 13 && name.value) {
+
+        const accountId = generateUniqueId();
+        accountsData.push({id: accountId, name: name.value});
+
         let df = new DocumentFragment();
 
         
-        // Store data to array
-        accountsData.push(name.value);
         // display accounts
         let div = document.createElement('div');
         div.textContent = name.value;
         div.className = 'account-names';
-        div.id = name.value;
+        div.setAttribute('data-account-id', accountId);
         df.appendChild(div);
 
         // make delete button
         let button = document.createElement('button');
         button.textContent = 'Delete';
         button.className = 'delete-button js-delete-button';
-        button.id = name.value;
+        button.addEventListener('click', () => { deleteAccount(accountId); });
         div.appendChild(button);
 
-        // making delete button functional
-        
-        
       
         boxElement.appendChild(df);
         name.value = '';
@@ -51,13 +50,21 @@ export function createAccount() {
 
 
 
-function deleteAccount() {
+function deleteAccount(accountId) {
+  const index = accountsData.findIndex((account) => account.id === accountId);
+  if (index !== -1) {
+    // remove from the array
+    accountsData.splice(index, 1);
+    // remove from the DOM
+    const deleteThis = document.querySelector(`[data-account-id="${accountId}"]`);
+    deleteThis.remove();
 
+  }
 }
 
 
 function generateUniqueId() {
-  return '_' + Math.random().toString(36).substr(2, 9);
+  return 'accountId_' + Math.random().toString(36).substr(2, 9);
 }
 
 
