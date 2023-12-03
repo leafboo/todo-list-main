@@ -9,7 +9,7 @@ let accountsData = [];
 
 export function createAccount() {
   // checks if the account box is full and if not, run the function
-  if (accountsData.length <= 19) {
+  if (accountsData.length <= 13) {
     // remove the create button 
     createAccountContainerElement.innerHTML = '';
 
@@ -43,7 +43,7 @@ export function createAccount() {
 
     // when the create account button is pressed
     createAccountButton.addEventListener('click', () => {
-      if (accountsData.length <= 19) {
+      if (accountsData.length <= 13) {
         let df = new DocumentFragment();
 
         
@@ -65,14 +65,7 @@ export function createAccount() {
         
         // make delete button functional
         // foreach accountsData[], do this!!!!
-        const accountId = div.id;
-        const selectAll = document.querySelectorAll('.js-delete-button');
-        selectAll.forEach((button) => {
-          button.addEventListener('click', () => {
-          
-          console.log(accountId);
-        })
-        });
+       
         
       
         boxElement.appendChild(df);

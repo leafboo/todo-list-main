@@ -46,12 +46,14 @@ body {
     transition: opacity 0.15s;
   }
   .delete-button {
+    position: absolute;
+    right: 0;
     background-color: rgba(204, 0, 0, 0.9);
     color: white;
-    font-size: 14px;
-    padding: 5px 13px;
+    font-size: 16px;
+    padding: 8px 16px;
     
-    border-radius: 15px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
     transition: opacity 0.15s;
@@ -94,7 +96,10 @@ img {
 
 
 .account-names {
+  position: relative;
+  text-align: center;
+  width: 400px;
   font-size: 20px;
-  margin-bottom: 8px;
+  margin-bottom: 23px;
 }
 
