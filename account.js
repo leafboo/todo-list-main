@@ -1,7 +1,7 @@
 const createAccountContainerElement = document.querySelector('.js-create-account-container');
 const boxElement = document.querySelector('.js-box');
 
-let accountsData = [];
+let accountsData = JSON.parse(localStorage.getItem('accountsData')) || [];
 
 export function createAccountEventListener() {
   // checks if the account box is full and if not, run the function
@@ -21,33 +21,42 @@ export function createAccountEventListener() {
   }
   
 }
+export function displayAccounts() {
+  boxElement.textContent = '';
+  let df = new DocumentFragment();
+  accountsData.forEach((account) => {
+    // make div for both name and delete button
+    let div = document.createElement('div');
+    div.textContent = account.name;
+    div.className = 'account-names';
+    div.setAttribute('data-account-id', account.id);
+    df.appendChild(div);
 
+    /* make the name
+    div.addEventListener('click', () => {
+      window.location.href = 'todo-list.html';
+    });
+    */
+
+    // make delete button
+    let button = document.createElement('button');
+    button.textContent = 'Delete';
+    button.className = 'delete-button js-delete-button';
+    button.addEventListener('click', () => { deleteAccount(account.id); });
+    div.appendChild(button);
+
+  });
+  boxElement.appendChild(df);
+}
 function createAccount(name) {
   
   if (accountsData.length <= 13 && name.value) {
 
     const accountId = generateUniqueId();
     accountsData.push({id: accountId, name: name.value});
-
-    let df = new DocumentFragment();
-
-    
-    // display accounts
-    let div = document.createElement('div');
-    div.textContent = name.value;
-    div.className = 'account-names';
-    div.setAttribute('data-account-id', accountId);
-    df.appendChild(div);
-
-    // make delete button
-    let button = document.createElement('button');
-    button.textContent = 'Delete';
-    button.className = 'delete-button js-delete-button';
-    button.addEventListener('click', () => { deleteAccount(accountId); });
-    div.appendChild(button);
-
-  
-    boxElement.appendChild(df);
+    // save the data/ array to the local storage
+    localStorage.setItem('accountsData', JSON.stringify(accountsData));
+    displayAccounts();
     name.value = '';
   }
 }
@@ -57,6 +66,8 @@ function deleteAccount(accountId) {
   if (index !== -1) {
     // remove from the array
     accountsData.splice(index, 1);
+    // update the array
+    localStorage.setItem('accountsData', JSON.stringify(accountsData));
     // remove from the DOM
     const deleteThis = document.querySelector(`[data-account-id="${accountId}"]`);
     deleteThis.remove();
