@@ -95,16 +95,20 @@ img {
 
 
 
-.account-names {
+.account-name-row {
   position: relative;
   text-align: center;
   width: 400px;
   font-size: 20px;
   margin-bottom: 23px;
-  cursor: pointer;
-  transition: opacity 0.15s;
-}
-.account-names:hover {
-  opacity: 0.8;
 }
 
+
+
+.account-name {
+  cursor: pointer;
+  transform: opacity 0.15s;
+}
+.account-name:hover {
+  opacity: 0.8;
+}

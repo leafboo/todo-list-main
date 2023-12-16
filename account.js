@@ -16,8 +16,6 @@ export function createAccountEventListener() {
     createAccountButton.addEventListener('click', () => createAccount(name));
     name.addEventListener('keyup', (event) => event.key === 'Enter' ? createAccount(name) : '');
 
-    
-
   }
   
 }
@@ -27,16 +25,15 @@ export function displayAccounts() {
   accountsData.forEach((account) => {
     // make div for both name and delete button
     let div = document.createElement('div');
-    div.textContent = account.name;
-    div.className = 'account-names';
+    div.className = 'account-name-row';
     div.setAttribute('data-account-id', account.id);
     df.appendChild(div);
 
-    /* make the name
-    div.addEventListener('click', () => {
-      window.location.href = 'todo-list.html';
-    });
-    */
+    // span
+    let span = document.createElement('span');
+    span.textContent = account.name
+    span.className = 'account-name';
+    div.appendChild(span);
 
     // make delete button
     let button = document.createElement('button');
