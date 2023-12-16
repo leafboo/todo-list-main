@@ -46,23 +46,29 @@ body {
     transition: opacity 0.15s;
   }
   .delete-button {
+    border: solid;
+    border-width: 1px;
+    border-color: rgba(204, 0, 0, 0.9);
+    background-color: transparent;
     position: absolute;
     right: 0;
-    background-color: rgba(204, 0, 0, 0.9);
-    color: white;
+    color: rgba(204, 0, 0, 0.9);
     font-size: 16px;
     padding: 8px 16px;
-    
-    border-radius: 10px;
-    border: none;
+    border-radius: 8px;
     cursor: pointer;
     transition: opacity 0.15s;
     margin-left: 30px;
+    transition: background-color 0.15s, color 0.15s;
+  }
+  .delete-button:hover {
+    background-color: rgba(204, 0, 0, 0.9);
+    color: white;
   }
   .create-account.active {
     margin-right: 10px;
   }
-    .create-account:hover, .delete-button:hover {
+    .create-account:hover {
       opacity: 0.7;
     }
 
@@ -74,7 +80,7 @@ body {
 }
 .box {
   border-width: 1px;
-  color: rgb(167, 167, 167);
+  color: rgb(221, 221, 221);
   border-style: solid;
   width: 700px;
   height: 600px;
@@ -107,7 +113,7 @@ img {
 
 .account-name {
   cursor: pointer;
-  transform: opacity 0.15s;
+  transform: opacity 0.15s; 
 }
 .account-name:hover {
   opacity: 0.8;
