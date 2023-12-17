@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .flex-container {
+      display: flex;
+      background-color: lightblue;
+      justify-content: center;
+    }
+    .outer-container {
+      text-align: center;
+      border-width: 1px;
+      color: black;
+      border: solid;
+      width: 300px;
+      height: 400px;
+    }
+    .rows {
+      position: relative;
+      text-align: center;
+      background-color: lightpink;
+    }
+    .rows-2 {
+      text-align: center;
+      position: relative;
+      background-color: lightseagreen;
+    }
+    button {
+      position: absolute;
+      right: 40px;
+    }
+    .span {
+      background-color: lightcoral;
+    }
+  </style>
+
+
+</head>
+<body>
+  <div class="flex-container">
+    <div class="outer-container">
+      hello
+      <div class="rows">
+        <span class="span">yes</span>
+        <button>henlo</button>
+      </div>
+      <div class="rows-2">
+        no
+        <button>henlo</button>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>
