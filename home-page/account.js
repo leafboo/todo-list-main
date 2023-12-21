@@ -33,7 +33,11 @@ export function displayAccounts() {
     let span = document.createElement('span');
     span.textContent = account.name
     span.className = 'account-name';
-    span.addEventListener('click', () => {window.location.href = '/user-todo-list-page/user-todo-list.html'});
+    span.addEventListener('click', () => {
+      // go to account todo list when name is clicked
+      localStorage.setItem('passThis', account.name);
+      window.location.href = '/user-todo-list-page/user-todo-list.html';
+    });
     div.appendChild(span);
 
     // make delete button
