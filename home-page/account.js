@@ -101,15 +101,12 @@ function createInputTodo() {
   let buttonBack = document.createElement('button');
   buttonBack.className = 'create-account active back-button';
   buttonBack.textContent = 'X';
+  buttonBack.addEventListener('click', goBack);
 
-  df.appendChild(input);
-  df.appendChild(buttonCreate2);
-  df.appendChild(buttonBack);
+  df.append(input, buttonCreate2, buttonBack);
   // append input, create button, and back button to the HTML
   createAccountContainerElement.appendChild(df);
 
-  let backButtonElement = document.querySelector('.back-button');
-  backButtonElement.addEventListener('click', goBack);
   // go back to default page
   function goBack() {
     createAccountContainerElement.innerHTML = '';
