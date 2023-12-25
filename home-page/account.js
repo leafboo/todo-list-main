@@ -1,7 +1,6 @@
 const createAccountContainerElement = document.querySelector('.js-create-account-container');
 const boxElement = document.querySelector('.js-box');
-
-let accountsData = JSON.parse(localStorage.getItem('accountsData')) || [];
+const accountsData = JSON.parse(localStorage.getItem('accountsData')) || [];
 
 export function createAccountEventListener() {
   // checks if the account box is full and if not, run the function
@@ -55,7 +54,7 @@ function createAccount(name) {
   if (accountsData.length <= 13 && name.value) {
 
     const accountId = generateUniqueId();
-    accountsData.push({id: accountId, name: name.value});
+    accountsData.push({id: accountId, name: name.value, todolist: []});
     // save the data/ array to the local storage
     localStorage.setItem('accountsData', JSON.stringify(accountsData));
     displayAccounts();

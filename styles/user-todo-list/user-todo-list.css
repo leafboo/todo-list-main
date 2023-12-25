@@ -90,3 +90,40 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
+
+.task-name-row {
+  position: relative;
+  text-align: center;
+  width: 400px;
+  font-size: 20px;
+  margin-bottom: 23px;
+}
+.task-name {
+  cursor: pointer;
+  transform: opacity 0.15s; 
+}
+.task-name:hover {
+  opacity: 0.8;
+}
+
+.task-delete-button {
+  border: solid;
+  border-width: 1px;
+  border-color: rgba(204, 0, 0, 0.9);
+  background-color: transparent;
+  position: absolute;
+  right: 0;
+  color: rgba(204, 0, 0, 0.9);
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  margin-left: 30px;
+  transition: background-color 0.15s, color 0.15s;
+}
+.task-delete-button:hover {
+  background-color: rgba(204, 0, 0, 0.9);
+  color: white;
+}
