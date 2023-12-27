@@ -99,14 +99,6 @@ body {
   font-size: 20px;
   margin-bottom: 23px;
 }
-.task-name {
-  cursor: pointer;
-  transform: opacity 0.15s; 
-}
-.task-name:hover {
-  opacity: 0.8;
-}
-
 .task-delete-button {
   border: solid;
   border-width: 1px;

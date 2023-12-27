@@ -4,7 +4,7 @@ const accountsData = JSON.parse(localStorage.getItem('accountsData')) || [];
 
 export function createAccountEventListener() {
   // checks if the account box is full and if not, run the function
-  if (accountsData.length <= 13) {
+  if (accountsData.length < 13) {
     // create the input text, create and delete button
     createInputTodo();
     
@@ -51,7 +51,7 @@ export function displayAccounts() {
 }
 function createAccount(name) {
   
-  if (accountsData.length <= 13 && name.value) {
+  if (accountsData.length < 13 && name.value) {
 
     const accountId = generateUniqueId();
     accountsData.push({id: accountId, name: name.value, todolist: []});
