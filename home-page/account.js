@@ -35,7 +35,7 @@ export function displayAccounts() {
     span.addEventListener('click', () => {
       // go to account todo list when name is clicked
       localStorage.setItem('passThis', account.name);
-      window.location.href = '/user-todo-list-page/user-todo-list.html';
+      window.location.href = '../user-todo-list-page/user-todo-list.html';
     });
     div.appendChild(span);
 
