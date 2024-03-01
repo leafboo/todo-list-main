@@ -1,7 +1,7 @@
 const boxElement = document.querySelector('.js-box');
 
 const backButton = document.querySelector('.js-back-button');
-backButton.addEventListener('click', () => {window.location.href = '/home-page/index.html'});
+backButton.addEventListener('click', () => {window.location.href = '../home-page/index.html'});
 
 const passedName = localStorage.getItem('passThis');
 const userName = document.querySelector('.js-user-name');
